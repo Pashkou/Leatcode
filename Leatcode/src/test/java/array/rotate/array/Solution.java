@@ -8,24 +8,26 @@ import org.junit.Test;
 
 public class Solution {
 	public static void rotate(int[] nums, int k) {
-			k = k % nums.length;
-	        int count = 0;
-	        
-	        for (int start = 0; count < nums.length; start++) {
-	        	
-	        	
-	            int current = start;
-	            int prev = nums[start];
-	            do {
-	                int next = (current + k) % nums.length;
-	                int temp = nums[next];
-	                nums[next] = prev;
-	                prev = temp;
-	                current = next;
-	                count++;
-	            } while (start != current);
-	        }
+			
 		
+		int startIndex = 0;
+		for(int counter = 0; counter < nums.length;) {
+			
+			int currentIndex = startIndex;
+			int prevValue = nums[currentIndex];
+			do {
+				int tempValue = prevValue;
+				currentIndex = (currentIndex + k) % nums.length;
+				
+				prevValue = nums[currentIndex];
+				nums[currentIndex] = tempValue;
+				
+				counter++;
+				
+			}while(currentIndex != startIndex);
+			
+			startIndex++;
+		}
 		
 		
     }
