@@ -2,8 +2,10 @@ package array.best.time.buy.sell.stock;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -49,7 +51,7 @@ public class Solution {
         }
 		
         
-        int resultLength = 0;
+        List<Integer> resultList = new ArrayList();
         for(int i : nums2) {
         	if(nums1Map.containsKey(i) && nums2Map.containsKey(i)){
         		Integer integer = nums1Map.get(i);
@@ -66,32 +68,11 @@ public class Solution {
         		}else {
         			nums2Map.put(i, integer);
         		}
-        		resultLength++;
+        		resultList.add(i);
         	}
         }
-        int[] result = new int[resultLength];
-        int counter = 0;
-        for(int i : nums2) {
-        	if(nums1Map.containsKey(i) && nums2Map.containsKey(i)){
-        		Integer integer = nums1Map.get(i);
-        		--integer;
-        		if(integer == 0) {
-        			nums1Map.remove(i);
-        		}else {
-        			nums1Map.put(i, integer);
-        		}
-        		integer = nums2Map.get(i);
-        		--integer;
-        		if(integer == 0) {
-        			nums2Map.remove(i);
-        		}else {
-        			nums2Map.put(i, integer);
-        		}
-        		result[counter++] = i;
-        	}
-        }
-        	
-		return result;
+        
+        return resultList.stream().mapToInt(p -> p).toArray();
     }
 	
 	public boolean containsDuplicate(int[] nums) {
