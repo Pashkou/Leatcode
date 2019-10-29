@@ -36,7 +36,6 @@ public class Solution {
         	}else {
         		nums1Map.put(i, ++nums1Counter);
         	}
-        
         }
         
         for(int i : nums2) {
@@ -49,7 +48,6 @@ public class Solution {
         	}
         	
         }
-		
         
         List<Integer> resultList = new ArrayList();
         for(int i : nums2) {
