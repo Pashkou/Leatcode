@@ -15,16 +15,9 @@ public class ReverseInteger {
 			if (reversed > Integer.MAX_VALUE/10) return 0;
 			if ((reversed == Integer.MAX_VALUE/10) && (last > 7)) {	return 0;}
 
-			if (reversed < Integer.MIN_VALUE/10)
-				return 0;
-			if (reversed == Integer.MIN_VALUE/10) {
-				if(last > 8) {
-					return 0;
-				}
-			}
-			
+			if (reversed < Integer.MIN_VALUE/10) return 0;
+			if ((reversed == Integer.MIN_VALUE/10) && (last > 8)) { return 0;}
 			reversed = reversed * 10 + last;
-
 		}
 
 		return reversed;
