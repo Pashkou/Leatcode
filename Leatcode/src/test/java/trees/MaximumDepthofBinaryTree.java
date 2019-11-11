@@ -28,7 +28,54 @@ public class MaximumDepthofBinaryTree {
 		
 		return 1 + (resultLeft > resultRight ? resultLeft : resultRight);
     }
+	
+    public boolean isValidBST(TreeNode root) {
+    	return helper(root, null, null);
+    }
 
+    public boolean helper(TreeNode root, Integer leftLimit, Integer rigthLimit) {
+    	if(root == null) {
+    		return true;
+    	}
+    	
+    	if((rigthLimit == null)&&(leftLimit == null)) {
+    		if((root.val > root.left.val) && (root.val < root.right.val)) {
+    			boolean fromLeft = helper(root.left, root.val, null);
+    	    	boolean fromRight = helper(root.right, null, root.val);
+    			return fromLeft && fromRight;
+    		} else {
+    			return false;
+    		}
+    		
+    	}
+    	
+    	
+    	if((rigthLimit == null)&&(leftLimit != null)) {
+    		if(root.val < leftLimit) {
+    			boolean fromLeft = helper(root.left, root.val, null);
+    	    	boolean fromRight = helper(root.right, null, root.val);
+    			return fromLeft && fromRight;
+    		} else {
+    			return false;
+    		}
+    		
+    	}
+    	
+    	if((leftLimit == null)&&(rigthLimit != null)) {
+    		if(root.val > rigthLimit) {
+    			boolean fromLeft = helper(root.left, root.val, null);
+    	    	boolean fromRight = helper(root.right, null, root.val);
+    			return fromLeft && fromRight;
+    		}else {
+    			return false;
+    		}
+    	}
+    	    	
+    	
+    	return true;
+    }
+    
+    
 	@Test
 	public void test() {
 		fail("Not yet implemented");
