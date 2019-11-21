@@ -69,16 +69,31 @@ public class BinarySearchTree {
 				parentNode = currentNode; currentNode = currentNode.right;}
 			if(oldValue == currentNode.val) {
 				if((currentNode.left != null) && (currentNode.right == null)) {
-
-					
+					if(currentNode.val < parentNode.val) {
+						parentNode.left = currentNode.left;
+					}else {
+						parentNode.right = currentNode.left;
+					}
+					return;
 				} else if((currentNode.right != null) && (currentNode.left == null)) {
 					
+					if(currentNode.val < parentNode.val) {
+						parentNode.left = currentNode.left;
+					}else {
+						parentNode.right = currentNode.left;
+					}
+					return;
 				} else {
+
+					Node leftMost = currentNode.right;
+					while(leftMost.left != null) {
+						leftMost = leftMost.left;
+					}
 					
+					currentNode.val = leftMost.val;
+					leftMost = null;
+					return;
 				}
-				
-				
-				
 			}
 		}
 		
@@ -102,6 +117,7 @@ public class BinarySearchTree {
 		bst.insert(15);
 		bst.insert(170);
 		
+		bst.delete(20);
 		
 		System.out.println(bst.lookup(170).val);
 
