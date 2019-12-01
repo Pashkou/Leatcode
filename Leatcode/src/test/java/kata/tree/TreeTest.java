@@ -1,8 +1,12 @@
 package kata.tree;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
+import java.util.LinkedList;
 import java.util.NoSuchElementException;
+import java.util.Queue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,6 +20,26 @@ public class TreeTest {
         bst = new BinarySearchTree();
     }
 
+    
+    public void traverse() {
+    	TreeNode root = new TreeNode(1);
+    	
+    	Queue queue = new LinkedList<>();
+    	queue.add(root);
+   
+    }
+    
+    private void traverseRec(Queue queue) {
+//    	TreeNode current = queue.poll();
+//
+//
+//    	System.out.println(current);
+//    	
+//    	queue.add(current.left)
+//    	queue.add(current.right)
+//    	traverseRec(queue);
+    }
+    
     @Test
     public void testInsertElementInBSTSizeIncreases() {
         bst.insert(1);
