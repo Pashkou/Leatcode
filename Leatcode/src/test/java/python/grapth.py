@@ -30,9 +30,50 @@ class Graph :
           for vertex in nodeConnections:
               connections.append(vertex) 
           print(f"{node} --> {connections}")
+  
+  def setZeroes(self, m):
+      rowZ = False
+      colZ = False
       
+      for col in m[0]:
+          if col == 0:
+              colZ = True; break
       
+      for row in range(len(m)):
+          if m[row][0] == 0:
+              rowZ = True; break
       
+      for i in range(1,len(m)):
+          for j in range(1,len(m[i])):
+                if m[i][j] == 0:
+                    m[0][j] = -1; m[i][0] = -1
+    
+      for i in range(1,len(m)):
+          for j in range(1,len(m[i])):          
+              if m[0][j]==-1 or m[i][0]==-1:
+                  m[i][j] = 0
+      
+      for i in range(len(m[0])):
+          if colZ==True:
+            m[0][i] = 0
+          else: m[0][i] = 1
+        
+      print(m)     
+      for row in range(len(m)):
+          if rowZ==True:
+             m[row][0] = 0
+          else:
+             m[row][0] = 1
+     
+      print(m)
+      
+myGraph = Graph()
+myGraph.setZeroes([[1,1,1],[1,0,1],[1,1,1]])    
+     
+     
+     
+      
+'''      
 myGraph = Graph()
 myGraph.addVertex({"0" : []})
 myGraph.addVertex({"1" : []})
@@ -53,7 +94,7 @@ myGraph.addEdge('6', '5');
 myGraph.removeVertex('2')
 
 myGraph.showConnections()
-
+'''
 '''
 //Answer:
 // 0-->1 2 
