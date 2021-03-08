@@ -43,15 +43,38 @@ public class ReverseLinkedList {
 		return result;
 	}
 	
-	
+	 public ListNode reverseList3(ListNode head) {
+	        if(head == null){
+	            return null;
+	        }
+	        
+	        if(head.next == null){
+	            return head;
+	        }
+	        
+	        ListNode prev = null;
+	        ListNode next = null;
+	        while(head != null){
+	            next = head.next;
+	            head.next = prev;
+	            prev = head;
+	            head = next;
+	        }
+	        return prev;
+	    }
+	 
 	@Test
 	public void test() {
-		/*int[] input = {1,2,3,4,5};
+		int[] input = {1,2,3,4,5};
 		ListNode listNode = ListNode.initListNode(input);
+		
+		new ReverseLinkedList().reverseList3(listNode);
+		
+		/*ListNode listNode = ListNode.initListNode(input);
 		
 		ListNode.iterateList(new ReverseLinkedList().reverseList(listNode));
 		*/
-		new ReverseLinkedList().sum(5);
+		//new ReverseLinkedList().sum(5);
 		
 	}
 

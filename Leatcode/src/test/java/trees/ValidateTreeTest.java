@@ -22,7 +22,7 @@ public class ValidateTreeTest {
         
         if(root == null) return true;
         
-        if(((lower!=null) && (root.val < lower)) || (upper!=null && root.val > upper))
+        if(((lower!=null) && (root.val <= lower)) || (upper!=null && root.val >= upper))
         {
             return false;
         }
